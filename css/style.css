@@ -7,6 +7,16 @@ main{
     min-width: 100%;
     min-height: 800px;
     background-color: rgb(255, 184, 51);
+    /*
+    background: rgb(255,174,58);
+    background: linear-gradient(125deg, rgba(255,174,58,1) 52%, rgba(78,87,254,1) 83%);
+  
+    background: rgb(255,174,58);
+    background: linear-gradient(125deg, rgba(255,174,58,1) 54%, rgba(232,254,78,1) 90%);
+    
+    background: rgb(255,172,53);
+    background: linear-gradient(125deg, rgba(255,172,53,1) 24%, rgba(230,255,50,1) 69%, rgba(108,127,244,1) 93%);
+    */
     padding: 30px;
 }  
 .header{

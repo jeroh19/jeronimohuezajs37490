@@ -1,4 +1,4 @@
-
+/*
 const carrito = []
 
 const iva = X => X * 0.21
@@ -67,3 +67,25 @@ while ((MetodoDePago != "1") && (MetodoDePago != "2") && (MetodoDePago != "3") )
     MetodoDePago = prompt("Ingrese su forma de pago (1 para transferencia bancaria, 2 para tarjeta de credito y 3 para cancelar la compra)")
 }
 alert("Gracias por la compra adios")
+*/
+
+
+let cartas = document.getElementById("block")
+console.log(cartas)
+
+mostrarCards()
+
+function mostrarCards(){
+    Inventario.forEach(prod =>{
+        let div = document.createElement("div")
+        div.className = "cards"
+        div.innerHTML = `<img class="cards__img" src=${prod.img}>
+                            <div class="cards_body">
+                                <h4 class="cards__titulo">${prod.nombre}</h4>
+                                <p class="cards__descripcion">Descripcion: ${prod.desc}</p>
+                                <p class="cards__precio">$${prod.precio}</p>
+                                <button class="cards__button">Comprar</button>
+                            </div>`
+    cartas.appendChild(div)               
+ })
+}
