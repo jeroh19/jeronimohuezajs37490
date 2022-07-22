@@ -69,6 +69,10 @@ while ((MetodoDePago != "1") && (MetodoDePago != "2") && (MetodoDePago != "3") )
 alert("Gracias por la compra adios")
 */
 let cartas = document.getElementById("conteiner__cards")
+let carritoaparecer = document.getElementById("carritoaparecer")
+let carritodesaparecer = document.getElementById("carritodesaparecer")
+let carritoestado = document.getElementById("carrito")
+console.log(carritodesaparecer)
 
 const carrito = []
 
@@ -96,10 +100,7 @@ function mostrarCards(){
     cartas.appendChild(div)               
  })
 }
-let carritoaparecer = document.getElementById("carritoaparecer")
-let carritodesaparecer = document.getElementById("carritodesaparecer")
-let carritoestado = document.getElementById("carrito")
-console.log(carritodesaparecer)
+
 
 
 carritoaparecer.onclick = () =>{
