@@ -96,11 +96,15 @@ function mostrarCards(){
     cartas.appendChild(div)               
  })
 }
-let carritoicon = document.getElementById("carritoicon")
-let carritoaparecer = document.getElementById("carrito")
-console.log(carritoicon)
+let carritoaparecer = document.getElementById("carritoaparecer")
+let carritodesaparecer = document.getElementById("carritodesaparecer")
+let carritoestado = document.getElementById("carrito")
+console.log(carritodesaparecer)
 
 
-carritoicon.onclick = () =>{
-    carritoaparecer.style.right= 0
+carritoaparecer.onclick = () =>{
+    carritoestado.style.right= 0
+}
+carritodesaparecer.onclick = () =>{
+    carritoestado.style.right= -100 + "%"
 }

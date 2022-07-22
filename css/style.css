@@ -43,6 +43,7 @@ main{
 }
 .header__carrito:hover{
     color: black;
+    cursor: pointer;
 }
 #carrito{
     width: 40%;
@@ -54,7 +55,7 @@ main{
     z-index: 50;
     top: 0;
     right: -100%;
-    transition: right 1s;
+    transition: right 2s;
 }
 
 .carrito__seccion{
@@ -70,6 +71,10 @@ main{
     text-decoration: none;
     color: black;
     font-size: 25px;
+    cursor: pointer;
+}
+.x__carrito:hover{
+    color: red;
 }
 .carrito__productos{
     margin-top: 20px;
