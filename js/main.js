@@ -69,8 +69,14 @@ while ((MetodoDePago != "1") && (MetodoDePago != "2") && (MetodoDePago != "3") )
 alert("Gracias por la compra adios")
 */
 
+const carrito = []
 
-let cartas = document.getElementById("block")
+const iva = X => X * 0.21
+
+let pagar = 0
+
+
+let cartas = document.getElementById("conteiner__cards")
 console.log(cartas)
 
 mostrarCards()
@@ -79,9 +85,9 @@ function mostrarCards(){
     Inventario.forEach(prod =>{
         let div = document.createElement("div")
         div.className = "cards"
-        div.innerHTML = `<img class="cards__img" src=${prod.img}>
+        div.innerHTML = `<img class="cards__img" src=./img/${prod.img}>
                             <div class="cards_body">
-                                <h4 class="cards__titulo">${prod.nombre}</h4>
+                                <h4 class="cards__titulo">${prod.producto}</h4>
                                 <p class="cards__descripcion">Descripcion: ${prod.desc}</p>
                                 <p class="cards__precio">$${prod.precio}</p>
                                 <button class="cards__button">Comprar</button>

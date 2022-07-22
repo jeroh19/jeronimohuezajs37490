@@ -6,7 +6,8 @@
 main{
     min-width: 100%;
     min-height: 800px;
-    background-color: rgb(255, 184, 51);
+    background-color: rgb(253, 152, 69);
+    
     /*
     background: rgb(255,174,58);
     background: linear-gradient(125deg, rgba(255,174,58,1) 52%, rgba(78,87,254,1) 83%);
@@ -40,30 +41,94 @@ main{
     font-size: 40px;
     color: white;
 }
+.header__carrito:hover{
+    color: black;
+}
+#carrito{
+    width: 40%;
+    height: 100%;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 50;
+    transition: right 1s;
+}
+#carrito:target{
+    right: 0%;
+}
+.carrito__seccion{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+.titulo__carrito{
+    font-weight: bold;
+    font-size: 25px;
+}
+.x__carrito{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+.carrito__productos{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: 500px;
+    border: 2px solid black;
+    border-top: none;
+    border-bottom: none;
+
+}
+.carrito__formulario{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.boton__eliminar{
+    background-color: transparent;
+    border: none;
+}
+.trash{
+    font-size: 18px;
+    color: red;
+}
 .seccion__titulo {
     font-size: 40px;
     font-style: italic;
     padding: 1rem;
     text-align: center;
-    color: rgb(77, 77, 77);
+    color: rgb(49, 49, 49);
+    border: 3px solid rgb(255, 255, 255);
+    border-top: none;
+    border-bottom: none;
 }
+
 .seccion__cards{
     padding: 1rem;
     width: 100%;
     min-height: 1000px;
-    
+    border: 3px solid rgb(255, 255, 255);
+    border-top: none;
+    border-bottom: none;
 }
-.conteiner__cards{
+#conteiner__cards{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 100px;
     padding: 2rem;
 }
 .cards{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 250px;
-    max-height: 380px;
+    max-height: 350px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
@@ -96,9 +161,11 @@ main{
     color: white;
     border: none;
     border-radius: 20px;
-    background-color: rgb(107, 107, 197);
+    background-color: rgb(86, 86, 158);
 }
-
+.cards__button:hover{
+    background-color: rgb(40, 2, 255);
+}
 .footer{
     background-color: #9e9d9d;
     border-top: 2px solid white;
