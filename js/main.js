@@ -74,17 +74,22 @@ let carritodesaparecer = document.getElementById("carritodesaparecer")
 let carritoestado = document.getElementById("carrito")
 console.log(carritodesaparecer)
 
-const carrito = []
+
 
 const iva = X => X * 0.21
 
 let pagar = 0
 
+//Carrito Despegable
+carritoaparecer.onclick = () =>{
+    carritoestado.style.right= 0
+}
+carritodesaparecer.onclick = () =>{
+    carritoestado.style.right= -100 + "%"
+}
 
 
-console.log(cartas)
 
-mostrarCards()
 
 function mostrarCards(){
     Inventario.forEach(prod =>{
@@ -95,17 +100,46 @@ function mostrarCards(){
                                 <h4 class="cards__titulo">${prod.producto}</h4>
                                 <p class="cards__descripcion">Descripcion: ${prod.desc}</p>
                                 <p class="cards__precio">$${prod.precio}</p>
-                                <button class="cards__button">Comprar</button>
+                                <button id="botonComprar${prod.id}" class="cards__button">Comprar</button>
                             </div>`
-    cartas.appendChild(div)               
- })
+    cartas.appendChild(div)
+    let botonComprar = document.getElementById(`botonComprar${prod.id}`)
+    botonComprar.onclick = ()=>{
+        cart(prod.id)
+        alert(`Agregaste ${prod.producto}`)
+    } 
+  })
 }
+mostrarCards()
+
+//Agregar al carrito
+const carrito = []
 
 
-
-carritoaparecer.onclick = () =>{
-    carritoestado.style.right= 0
+function cart (prodId){
+        let cartconteiner = document.getElementById("agregar__productos")
+    
+        let agregarCarrito = () =>{
+            let prod = Inventario.find( prod => prod.id == prodId)
+            carrito.push(prod)
+            console.log(prod)
+            localStorage.setItem("productos", JSON.stringify(carrito))
+            let div = document.createElement("div")
+            div.className = "carrito__formulario"
+            div.innerHTML = `<p>${prod.producto}</p>
+                            <p>Cant: 1</p>
+                            <p>Precio: $${prod.precio}</p>
+                            <button id="eliminar${prod.id}" class="boton__eliminar"><span class= "jam jam-trash-f trash"></span>
+                            `
+            cartconteiner.appendChild(div)
+            let botonEliProd = document.getElementById(`eliminar${prod.id}`)
+                botonEliProd.addEventListener("click",(e) =>{
+                    borrarProd(e)
+                })
+        }
+    agregarCarrito()
 }
-carritodesaparecer.onclick = () =>{
-    carritoestado.style.right= -100 + "%"
+function borrarProd(e){
+    let botonBorrar = e.target
+    botonBorrar.parenElement.remove()
 }
