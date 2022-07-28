@@ -115,31 +115,54 @@ mostrarCards()
 //Agregar al carrito
 const carrito = []
 
+let cartconteiner = document.getElementById("agregar__productos")
 
 function cart (prodId){
-        let cartconteiner = document.getElementById("agregar__productos")
+
+    let prod = Inventario.find( prod => prod.id == prodId)
+    carrito.push(prod)
+    localStorage.setItem("productos", JSON.stringify(carrito))
+    agregarCarrito()   
+    CarritoPagar()
+}   
+let agregarCarrito = () =>{
     
-        let agregarCarrito = () =>{
-            let prod = Inventario.find( prod => prod.id == prodId)
-            carrito.push(prod)
-            console.log(prod)
-            localStorage.setItem("productos", JSON.stringify(carrito))
-            let div = document.createElement("div")
-            div.className = "carrito__formulario"
-            div.innerHTML = `<p>${prod.producto}</p>
-                            <p>Cant: 1</p>
-                            <p>Precio: $${prod.precio}</p>
-                            <button id="eliminar${prod.id}" class="boton__eliminar"><span class= "jam jam-trash-f trash"></span>
-                            `
-            cartconteiner.appendChild(div)
-            let botonEliProd = document.getElementById(`eliminar${prod.id}`)
-                botonEliProd.addEventListener("click",(e) =>{
-                    borrarProd(e)
-                })
-        }
+    cartconteiner.innerHTML = ""
+    carrito.forEach(prod =>{
+    let div = document.createElement("div")
+        div.className = "carrito__formulario"
+        div.innerHTML = `<p>${prod.producto}</p>
+                        <p>Cant: 1</p>
+                        <p>Precio: $${prod.precio}</p>
+                        <button class="boton__eliminar" onClick=deleteProduct(${carrito.indexOf(prod)})><span class= "jam jam-trash-f trash"></span>
+                        `
+    cartconteiner.appendChild(div)
+    
+    })
+    
+}
+    
+
+function deleteProduct(prod){
+
+    carrito.splice(prod, 1)
+    console.log(carrito)
     agregarCarrito()
+    CarritoPagar()
+    
 }
-function borrarProd(e){
-    let botonBorrar = e.target
-    botonBorrar.parenElement.remove()
+// Suma total
+let totalText = document.getElementById("Total")
+
+function CarritoPagar (){
+
+    let precios = carrito.map((prod) => prod.precio) 
+    let pagar = precios.reduce((acumulador, precio) => acumulador + precio,0)
+    let totalIva = iva(pagar)
+    let totalPagar = pagar + totalIva
+    totalText.textContent = "Total(iva) =" + "$" +totalPagar
+    console.log(totalPagar)
+    
 }
+
+
