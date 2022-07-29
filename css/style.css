@@ -105,6 +105,8 @@ main{
     background-color: rgb(86, 86, 158) ;
     color: white;
     border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid black;
 }
 .carrito__boton:hover{
     background-color: rgb(40, 2, 255);

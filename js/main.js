@@ -81,6 +81,7 @@ const iva = X => X * 0.21
 let pagar = 0
 
 //Carrito Despegable
+
 carritoaparecer.onclick = () =>{
     carritoestado.style.right= 0
 }
@@ -113,20 +114,22 @@ function mostrarCards(){
 mostrarCards()
 
 //Agregar al carrito
+
 const carrito = []
 
 let cartconteiner = document.getElementById("agregar__productos")
 
 function cart (prodId){
-
+    
     let prod = Inventario.find( prod => prod.id == prodId)
     carrito.push(prod)
     localStorage.setItem("productos", JSON.stringify(carrito))
     agregarCarrito()   
     CarritoPagar()
-}   
-let agregarCarrito = () =>{
     
+}   
+
+let agregarCarrito = () =>{
     cartconteiner.innerHTML = ""
     carrito.forEach(prod =>{
     let div = document.createElement("div")
@@ -139,7 +142,6 @@ let agregarCarrito = () =>{
     cartconteiner.appendChild(div)
     
     })
-    
 }
     
 
@@ -151,18 +153,25 @@ function deleteProduct(prod){
     CarritoPagar()
     
 }
+
 // Suma total
+
 let totalText = document.getElementById("Total")
 
 function CarritoPagar (){
 
-    let precios = carrito.map((prod) => prod.precio) 
+    let precios = carrito.map((prod) => prod.precio)
     let pagar = precios.reduce((acumulador, precio) => acumulador + precio,0)
     let totalIva = iva(pagar)
     let totalPagar = pagar + totalIva
-    totalText.textContent = "Total(iva) =" + "$" +totalPagar
+    totalText.textContent = "Total(iva) =" + "$" + totalPagar
     console.log(totalPagar)
     
 }
 
+// Local Storage
 
+function localS (){
+    let productlist =JSON.parse(localStorage.getItem("productos"))
+    carrito.concat(productlist)
+}
