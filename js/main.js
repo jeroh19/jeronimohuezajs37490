@@ -120,13 +120,13 @@ const carrito = []
 let cartconteiner = document.getElementById("agregar__productos")
 
 function cart (prodId){
-    
     let prod = Inventario.find( prod => prod.id == prodId)
     carrito.push(prod)
+    localS() //funcion del LocalStorage
     localStorage.setItem("productos", JSON.stringify(carrito))
     agregarCarrito()   
     CarritoPagar()
-    
+    console.log(carrito)
 }   
 
 let agregarCarrito = () =>{
@@ -140,6 +140,8 @@ let agregarCarrito = () =>{
                         <button class="boton__eliminar" onClick=deleteProduct(${carrito.indexOf(prod)})><span class= "jam jam-trash-f trash"></span>
                         `
     cartconteiner.appendChild(div)
+
+    
     
     })
 }
@@ -172,6 +174,8 @@ function CarritoPagar (){
 // Local Storage
 
 function localS (){
-    let productlist =JSON.parse(localStorage.getItem("productos"))
-    carrito.concat(productlist)
+    if(localStorage.getItem("producto")){
+        carrito = JSON.parse(localStorage.getItem("producto"))
+    }
+
 }
