@@ -115,14 +115,14 @@ mostrarCards()
 
 //Agregar al carrito
 
-const carrito = []
+const carrito = JSON.parse(localStorage.getItem("productos")) || []
+
 
 let cartconteiner = document.getElementById("agregar__productos")
 
 function cart (prodId){
     let prod = Inventario.find( prod => prod.id == prodId)
     carrito.push(prod)
-    localS() //funcion del LocalStorage
     localStorage.setItem("productos", JSON.stringify(carrito))
     agregarCarrito()   
     CarritoPagar()
@@ -169,13 +169,4 @@ function CarritoPagar (){
     totalText.textContent = "Total(iva) =" + "$" + totalPagar
     console.log(totalPagar)
     
-}
-
-// Local Storage
-
-function localS (){
-    if(localStorage.getItem("producto")){
-        carrito = JSON.parse(localStorage.getItem("producto"))
-    }
-
 }
