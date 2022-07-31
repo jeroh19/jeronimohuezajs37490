@@ -111,9 +111,8 @@ function mostrarCards(){
             text: `Agregaste ${prod.producto} al carrito`,
             position: 'center',
             backgroundColor: "#9f9fdd",
-            style: {
-                color: "black"
-            }
+            className: "alert"
+            
             
           }).showToast();
     } 
