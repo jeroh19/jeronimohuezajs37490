@@ -113,8 +113,7 @@ function mostrarCards(){
             backgroundColor: "#9f9fdd",
             className: "alert"
             
-            
-          }).showToast();
+          }).showToast()
     } 
   })
 }
