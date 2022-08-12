@@ -68,6 +68,7 @@ while ((MetodoDePago != "1") && (MetodoDePago != "2") && (MetodoDePago != "3") )
 }
 alert("Gracias por la compra adios")
 */
+let cartas2 = document.getElementById("conteiner__cards2")
 let cartas = document.getElementById("conteiner__cards")
 let carritoaparecer = document.getElementById("carritoaparecer")
 let carritodesaparecer = document.getElementById("carritodesaparecer")
@@ -89,8 +90,24 @@ carritodesaparecer.onclick = () =>{
     carritoestado.style.right= -100 + "%"
 }
 
-
-
+function mostrarUltimosProd(){
+    fetch("/ultimosprod.json")
+        .then(response=> response.json())
+        .then(result => {
+            
+            let datos = result
+            datos.forEach(prod=>{
+                cartas2.innerHTML += `<img class="cards__img" src=./img/${prod.img}>
+                <div class="cards_body">
+                    <h4 class="cards__titulo">${prod.producto}</h4>
+                    <p class="cards__descripcion">Descripcion: ${prod.desc}</p>
+                    <p class="cards__precio">$${prod.precio}</p>
+                    <button id="botonComprar${prod.id}" class="cards__button">Agregar al Carro</button>
+                </div>`
+            })
+        })
+}
+mostrarUltimosProd()
 
 function mostrarCards(){
     Inventario.forEach(prod =>{
