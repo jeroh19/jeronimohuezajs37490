@@ -91,7 +91,7 @@ carritodesaparecer.onclick = () =>{
 }
 
 function mostrarUltimosProd(){
-    fetch("/ultimosprod.json")
+    fetch("./ultimosprod.json")
         .then(response=> response.json())
         .then(result => {
             
