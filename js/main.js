@@ -73,7 +73,7 @@ let cartas = document.getElementById("conteiner__cards")
 let carritoaparecer = document.getElementById("carritoaparecer")
 let carritodesaparecer = document.getElementById("carritodesaparecer")
 let carritoestado = document.getElementById("carrito")
-console.log(carritodesaparecer)
+
 
 
 
@@ -89,9 +89,9 @@ carritoaparecer.onclick = () =>{
 carritodesaparecer.onclick = () =>{
     carritoestado.style.right= -100 + "%"
 }
-
+/*
 function mostrarUltimosProd(){
-    fetch("./ultimosprod.json")
+    fetch("./js/prod.json")
         .then(response=> response.json())
         .then(result => {
             
@@ -108,9 +108,26 @@ function mostrarUltimosProd(){
         })
 }
 mostrarUltimosProd()
+*/
+//Vamos a traer los datos
+
+const inventario = []
+
+fetch("./js/prod.json")
+    .then(response=> response.json())
+    .then(result => {
+        let datos = result
+        inventario.push(...datos)
+        mostrarCards()
+        agregarCarrito()
+    })
+    console.log(inventario)
+    
+//Mostrar las cards
 
 function mostrarCards(){
-    Inventario.forEach(prod =>{
+    
+    inventario.forEach(prod =>{
         let div = document.createElement("div")
         div.className = "cards"
         div.innerHTML = `<img class="cards__img" src=./img/${prod.img}>
@@ -134,7 +151,7 @@ function mostrarCards(){
     } 
   })
 }
-mostrarCards()
+
 
 //Agregar al carrito
 
@@ -144,7 +161,7 @@ const carrito = JSON.parse(localStorage.getItem("productos")) || []
 let cartconteiner = document.getElementById("agregar__productos")
 
 function cart (prodId){
-    let prod = Inventario.find( prod => prod.id == prodId)
+    let prod = inventario.find( prod => prod.id == prodId)
     carrito.push(prod)
     agregarCarrito()   
     CarritoPagar()
@@ -193,3 +210,4 @@ function CarritoPagar (){
     console.log(totalPagar)
     
 }
+console.log(carrito)
