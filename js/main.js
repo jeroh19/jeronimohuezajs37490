@@ -119,7 +119,7 @@ fetch("./js/prod.json")
         let datos = result
         inventario.push(...datos)
         mostrarCards()
-        agregarCarrito()
+        
     })
     console.log(inventario)
     
