@@ -73,7 +73,7 @@ let cartas = document.getElementById("conteiner__cards")
 let carritoaparecer = document.getElementById("carritoaparecer")
 let carritodesaparecer = document.getElementById("carritodesaparecer")
 let carritoestado = document.getElementById("carrito")
-
+let btnComprar = document.getElementById("btnComprar")
 
 
 
@@ -155,7 +155,7 @@ function mostrarCards(){
 
 //Agregar al carrito
 
-const carrito = JSON.parse(localStorage.getItem("productos")) || []
+let carrito = JSON.parse(localStorage.getItem("productos")) || []
 
 
 let cartconteiner = document.getElementById("agregar__productos")
@@ -184,6 +184,7 @@ let agregarCarrito = () =>{
     
     
     })
+    
 }
     
 
@@ -191,6 +192,7 @@ function deleteProduct(prod){
 
     carrito.splice(prod, 1)
     console.log(carrito)
+    localStorage.setItem("productos", JSON.stringify(carrito))
     agregarCarrito()
     CarritoPagar()
     
@@ -210,4 +212,19 @@ function CarritoPagar (){
     console.log(totalPagar)
     
 }
-console.log(carrito)
+//Finalizar compra
+btnComprar.onclick= () =>{
+    console.log(btnComprar)
+    carrito = []
+    localStorage.clear()
+    agregarCarrito()
+    CarritoPagar()
+    Toastify({
+        text: `Su compra ha finalizado`,
+        position: 'center',
+        backgroundColor: "#fd9845",
+        className: "alert2"
+        
+      }).showToast()
+        
+}

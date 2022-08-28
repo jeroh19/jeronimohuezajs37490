@@ -216,7 +216,15 @@ main{
    
   }
   .alert{
+    background-color: #9f9fdd;
     color: black;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+  }
+  .alert2{
+    font-size: 20px;
+    color: black;
+    width: 500px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 10px;
   }
