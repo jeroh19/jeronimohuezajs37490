@@ -186,7 +186,7 @@ let agregarCarrito = () =>{
     })
     
 }
-    
+agregarCarrito()//Para que muestre aquellos prod del LocalStorage
 
 function deleteProduct(prod){
 
